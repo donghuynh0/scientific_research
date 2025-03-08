@@ -1,64 +1,16 @@
-# Virtual environments
-venv/
-.env/
-*.venv
-
-# Compiled source files
-#######################
+# Compiled source #
+###################
 *.com
 *.class
 *.dll
 *.exe
 *.o
 *.so
-*$py.class
 
-# Python cache files
-#####################
-__pycache__/
-*.py[cod]
-
-# Jupyter Notebook checkpoints
-##############################
-.ipynb_checkpoints/
-
-# Logs and temporary files
-###########################
-logs/
-*.log
-*.out
-*.err
-*.pid
-*.gz
-
-# Ignore large data files (modify if needed)
-############################################
-*.csv
-*.json
-*.xlsx
-*.h5
-*.pickle
-*.pkl
-
-# Machine learning models and weights
-#####################################
-models/
-*.h5
-*.ckpt
-*.pth
-*.onnx
-*.joblib
-
-# Results and generated files
-#############################
-output/
-results/
-*.png
-*.jpg
-*.svg
-
-# Packages (compressed files)
-#############################
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built-in compression methods
 *.7z
 *.dmg
 *.gz
@@ -68,13 +20,14 @@ results/
 *.tar
 *.zip
 
-# Logs and databases
-####################
+# Logs and databases #
+######################
+*.log
 *.sql
 *.sqlite
 
-# OS-generated files
-####################
+# OS generated files #
+######################
 .DS_Store
 .DS_Store?
 ._*
@@ -82,10 +35,11 @@ results/
 .Trashes
 ehthumbs.db
 Thumbs.db
+__pycache__/
 
-# VSCode and PyCharm settings
-#############################
-.vscode/
-.idea/
-*.iml
-*.ipynb
+# Environment variables #
+#########################
+.env
+config/aws_credentials.txt
+
+venv/
