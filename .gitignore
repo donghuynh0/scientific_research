@@ -1,18 +1,29 @@
-
-# Ignore virtual environments
+# Virtual environments
 venv/
 .env/
 *.venv
 
-# Ignore Python cache files
+# Compiled source files
+#######################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*$py.class
+
+# Python cache files
+#####################
 __pycache__/
 *.py[cod]
-*.class
 
-# Ignore Jupyter Notebook checkpoints
+# Jupyter Notebook checkpoints
+##############################
 .ipynb_checkpoints/
 
-# Ignore logs and temporary files
+# Logs and temporary files
+###########################
 logs/
 *.log
 *.out
@@ -21,6 +32,7 @@ logs/
 *.gz
 
 # Ignore large data files (modify if needed)
+############################################
 *.csv
 *.json
 *.xlsx
@@ -28,7 +40,8 @@ logs/
 *.pickle
 *.pkl
 
-# Ignore machine learning models and weights
+# Machine learning models and weights
+#####################################
 models/
 *.h5
 *.ckpt
@@ -36,15 +49,43 @@ models/
 *.onnx
 *.joblib
 
-# Ignore results and generated files
+# Results and generated files
+#############################
 output/
 results/
 *.png
 *.jpg
 *.svg
 
-# Ignore VSCode and PyCharm settings
+# Packages (compressed files)
+#############################
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+####################
+*.sql
+*.sqlite
+
+# OS-generated files
+####################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# VSCode and PyCharm settings
+#############################
 .vscode/
 .idea/
 *.iml
-
+*.ipynb
