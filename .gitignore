@@ -1,0 +1,50 @@
+
+# Ignore virtual environments
+venv/
+.env/
+*.venv
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.class
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore logs and temporary files
+logs/
+*.log
+*.out
+*.err
+*.pid
+*.gz
+
+# Ignore large data files (modify if needed)
+*.csv
+*.json
+*.xlsx
+*.h5
+*.pickle
+*.pkl
+
+# Ignore machine learning models and weights
+models/
+*.h5
+*.ckpt
+*.pth
+*.onnx
+*.joblib
+
+# Ignore results and generated files
+output/
+results/
+*.png
+*.jpg
+*.svg
+
+# Ignore VSCode and PyCharm settings
+.vscode/
+.idea/
+*.iml
+
