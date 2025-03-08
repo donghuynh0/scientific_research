@@ -66,7 +66,6 @@ scientific_research/
 │-- models/                  # Directory containing model training scripts
 │   ├── decision_tree/       # Scripts related to Decision Tree models
 │   ├── random_forest/       # Scripts related to Random Forest models
-│   ├── ...                  # Other model scripts
 ```
 
 ---
