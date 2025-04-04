@@ -58,11 +58,10 @@ Change the path to run different models.
 ## **Files and Directory Structure**
 ```
 scientific_research/
-│-- .env                    # Contains environment variables, including the data file path
+│-- .env                     # Contains environment variables, including the data file path
 │-- .gitignore               # Specifies files and directories to be ignored by Git
 │-- requirements.txt         # Lists the required Python packages
-│-- evaluate_model.py        # Contains functions to compute and print evaluation metrics
-│-- setup.py                 # Contains functions to load and preprocess the data
+│-- utils/                   # helper functions
 │-- models/                  # Directory containing model training scripts
 │   ├── decision_tree/       # Scripts related to Decision Tree models
 │   ├── random_forest/       # Scripts related to Random Forest models
