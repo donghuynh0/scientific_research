@@ -2,7 +2,8 @@ from sklearn.metrics import mean_squared_error
 import numpy as np
 import pandas as pd
 
-def evaluate(df, y_test, y_pred, grid_search = None):
+
+def evaluate(df, y_test, y_pred, grid_search=None):
     # Compute metrics
     mse = mean_squared_error(y_test, y_pred)
     mean_absolute_error = df["Absolute Error"].mean()
