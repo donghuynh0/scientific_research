@@ -6,12 +6,11 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../')))
 
-from setup import load_data
-from evaluate_model import evaluate
+from utils.setup import load_data
+from utils.evaluate_model import evaluate
 
 # load data
 data = load_data()

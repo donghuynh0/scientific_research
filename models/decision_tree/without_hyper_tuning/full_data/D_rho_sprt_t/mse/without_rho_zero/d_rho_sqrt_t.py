@@ -1,4 +1,4 @@
-""" y = D """
+""" y = D * p / sqrt(T)"""
 
 import numpy as np
 import pandas as pd
@@ -11,28 +11,31 @@ from utils.plot_scatter import plot_scatter, plot_relative_error
 # load data
 data = load_data()
 
+
 X = data[['T*', 'rho*']]
-y = data['D*']
+y = (data['D*'] * data['rho*']) / np.sqrt(data['T*'])
 
 # split data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# train with MAE criterion
-model = DecisionTreeRegressor(random_state=42, criterion="absolute_error")
+# train with MSE criterion
+model = DecisionTreeRegressor(random_state=42)
 model.fit(X_train, y_train)
 
 # predict
 y_pred = model.predict(X_test)
 
-df = pd.DataFrame({'Actual D*': y_test, 'Predicted D*': y_pred},)
+
+df = pd.DataFrame({'Actual (D*rho)/sqrt(T)': y_test, 'Predicted (D*rho)/sqrt(T)': y_pred})
 
 # compute errors
-df['Absolute Error'] = np.abs(df['Actual D*'] - df['Predicted D*'])
-df['Relative Error (%)'] = (df['Absolute Error'] / df['Actual D*']) * 100
+df['Absolute Error'] = np.abs(df['Actual (D*rho)/sqrt(T)'] - df['Predicted (D*rho)/sqrt(T)'])
+df['Relative Error (%)'] = (df['Absolute Error'] / df['Actual (D*rho)/sqrt(T)']) * 100
 
 evaluate(df, y_test, y_pred)
 print(f"Max Depth of the trained model: {model.get_depth()}")
 
+
 # plot
-plot_scatter(data['rho*'], data['D*'], 'rho*', 'D*')
-plot_relative_error(X_test, y_test, y_pred)
+plot_scatter(data['rho*'], data['(D* x rho*) / sqrt(T*)'], 'rho*', '(D* x rho*) / sqrt(T*)')
+plot_relative_error(X_test, y_test, y_pred, '(D* x rho*) / sqrt(T*)')

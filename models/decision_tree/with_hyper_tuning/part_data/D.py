@@ -4,15 +4,13 @@ import sys
 import os
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import GridSearchCV
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../')))
 
-from setup import load_splited_data
-from evaluate_model import evaluate
+from utils.setup import load_splited_data
+from utils.evaluate_model import evaluate
 
 # load data
 train_data, test_data = load_splited_data()
