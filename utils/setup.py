@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
-from utils.calculations import d_rho
+from utils.calculations import dpt
 
 load_dotenv()
 
@@ -30,20 +30,18 @@ def load_splited_data():
     return train_data, test_data
 
 
-def synthetic_data(X_train, target):
-    t_values = X_train['T*'].value_counts().index
-
-    if target == 'D* x rho*':
-        rho_values = [d_rho(T) for T in t_values]
-    elif target == '(D* x rho*) / sqrt(T*)':
-        rho_values = [d_rho(T) / np.sqrt(T) for T in t_values]
-    else:
-        raise ValueError("Unknown target value")
-
-    synthetic_data_train = pd.DataFrame({
+def load_augmented_data():
+    data = load_data()
+    train_data, test_data = load_splited_data()
+    new_data = train_data[['T*', 'rho*', 'D* x rho*', '(D* x rho*) / sqrt(T*)']]
+    t_values = data['T*'].value_counts().index
+    augmented_data_train = pd.DataFrame({
         'T*': t_values,
-        'rho*': rho_values,
-        target: rho_values
+        'rho*': 0,
+        'D* x rho*': [dpt(T) for T in t_values],
+        '(D* x rho*) / sqrt(T*)': [dpt(T) / np.sqrt(T) for T in t_values]
     })
 
-    return synthetic_data_train
+    new_train_data = pd.concat([new_data, augmented_data_train], ignore_index=True)
+
+    return new_train_data, test_data

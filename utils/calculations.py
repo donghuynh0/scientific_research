@@ -3,7 +3,7 @@ from numpy import log as ln
 
 
 # calculate D*rho at rho is zero
-def d_rho(T):
+def dpt(T):
     a11 = np.array([0, 0.125431, -0.167256, -0.265865, 1.59760, -1.19088, 0.264833])
     a22 = np.array([0, 0.310810, -0.171211, -0.715805, 2.48678, -1.78317, 0.394405])
 
