@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
-from utils.calculations import dpt, pressure, energy
+from utils.calculations import dpt
 
 load_dotenv()
 
@@ -43,45 +43,5 @@ def load_augmented_data():
     })
 
     new_train_data = pd.concat([new_data, augmented_data_train], ignore_index=True)
-
-    return new_train_data, test_data
-
-
-def load_augmented_data_with_pressure():
-    data = load_data()
-    data['pressure'] = data.apply(lambda row: pressure(row['rho*'], row['T*']), axis=1)
-    test_data = data[data['rho*'] < 0.1]
-    train_data = data[data['rho*'] >= 0.1]
-    new_data = train_data[['T*', 'rho*', 'pressure', 'D* x rho*', '(D* x rho*) / sqrt(T*)']]
-    t_values = data['T*'].value_counts().index
-    augmented_data_train = pd.DataFrame({
-        'T*': t_values,
-        'rho*': 0,
-        'D* x rho*': [dpt(T) for T in t_values],
-        '(D* x rho*) / sqrt(T*)': [dpt(T) / np.sqrt(T) for T in t_values]
-    })
-
-    new_train_data = pd.concat([new_data, augmented_data_train], ignore_index=True)
-    new_train_data['pressure'] = new_train_data['pressure'].fillna(0.0)
-
-    return new_train_data, test_data
-
-
-def load_augmented_data_with_energy():
-    data = load_data()
-    data['energy'] = data.apply(lambda row: energy(row['rho*'], row['T*']), axis=1)
-    test_data = data[data['rho*'] < 0.1]
-    train_data = data[data['rho*'] >= 0.1]
-    new_data = train_data[['T*', 'rho*', 'energy', 'D* x rho*', '(D* x rho*) / sqrt(T*)']]
-    t_values = data['T*'].value_counts().index
-    augmented_data_train = pd.DataFrame({
-        'T*': t_values,
-        'rho*': 0,
-        'D* x rho*': [dpt(T) for T in t_values],
-        '(D* x rho*) / sqrt(T*)': [dpt(T) / np.sqrt(T) for T in t_values]
-    })
-
-    new_train_data = pd.concat([new_data, augmented_data_train], ignore_index=True)
-    new_train_data['energy'] = new_train_data['energy'].fillna(0.0)
 
     return new_train_data, test_data
